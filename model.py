@@ -4,15 +4,17 @@ from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import numpy as np
 from keras.models import Sequential
-from keras.layers import Input, Dense
+from keras.layers import Dense
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 
 def convert_sparse_matrix_to_sparse_tensor(X):
+    """Function that converts feature matrix to tensor.
+
+    """
     coo = X.tocoo()
     indices = np.mat([coo.row, coo.col]).transpose()
     return tf.sparse.reorder(tf.SparseTensor(indices, coo.data, coo.shape))
-
 
 # Assing data as data and labels
 data = pd.read_csv('data.csv')
@@ -50,7 +52,7 @@ model.add(Dense(class_count, activation='softmax'))
 model.compile(optimizer="sgd",
               loss="sparse_categorical_crossentropy", metrics=['accuracy'])
 hist = model.fit(feature_matrix_train_tf, class_numbers_train, validation_data=(
-    feature_matrix_test_tf, class_numbers_test), batch_size=100, epochs=250)
+    feature_matrix_test_tf, class_numbers_test), batch_size=100, epochs=150)
 
 # Plot loss
 loss = hist.history['loss']
