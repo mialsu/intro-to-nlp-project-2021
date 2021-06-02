@@ -7,3 +7,6 @@ After processing data in dataprocessor.py a simple SVM-classifier was trained bu
 The usage of simple bag-of-words -method could be replaced with Tfidf-vectorization and through that higher accuracy could be reached. Also it would be possible to alter the neural network structure and possibly get performance increases. The dataset had it's whole vocabulary in the training phase and no stopwords or other words were dropped, so that could also be an upgrade.
 
 All in all the accuracy of 91.8% is acceptable and further development is still possible.
+
+## Usage
+Run dataprocessor.py first to create dataset for model training part.
