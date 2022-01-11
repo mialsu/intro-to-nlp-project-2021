@@ -7,6 +7,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
+import pickle
 
 def convert_sparse_matrix_to_sparse_tensor(X):
     """Function that converts feature matrix to tensor.
@@ -79,3 +80,11 @@ plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.legend()
 plt.show()
+
+# serialize to JSON
+json_file = model.to_json()
+with open("json_model.json", "w") as file:
+   file.write(json_file)
+
+# serialize weights to HDF5
+model.save_weights("model_weights.h5")

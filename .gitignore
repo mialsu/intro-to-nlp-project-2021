@@ -126,3 +126,5 @@ dmypy.json
 
 # other
 data.csv
+json_model.json
+model_weights.h5
