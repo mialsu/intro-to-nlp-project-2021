@@ -9,15 +9,15 @@ from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 import pickle
 
-def convert_sparse_matrix_to_sparse_tensor(X):
+def convert_sparse_matrix_to_sparse_tensor(matrix):
     """Function that converts feature matrix to tensor.
 
     """
-    coo = X.tocoo()
+    coo = matrix.tocoo()
     indices = np.mat([coo.row, coo.col]).transpose()
     return tf.sparse.reorder(tf.SparseTensor(indices, coo.data, coo.shape))
 
-# Assing data as data and labels
+# Assign data as data and labels
 data = pd.read_csv('data.csv')
 texts = data['1']
 labels = data['0']
